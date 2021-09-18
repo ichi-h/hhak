@@ -1,8 +1,8 @@
 module Args.HhakArgs
-  ( HhakArgs
-  , Options
-  , Algorithm
-  , genHhakArgs
+  ( HhakArgs (..)
+  , Options (..)
+  , Algorithm (..)
+  , strToAlgo
   ) where
 
 data HhakArgs = HhakArgs { command :: String
@@ -21,6 +21,11 @@ data Options = Options { display :: Bool
                        }
 
 data Algorithm =  Algo2b | Algo2a | Algo2y
+
+strToAlgo :: String -> Algorithm
+strToAlgo "2b" = Algo2b
+strToAlgo "2a" = Algo2a
+strToAlgo "2y" = Algo2y
 
 genHhakArgs :: [String] -> String -> Either String HhakArgs
 genHhakArgs args passphrase = do
