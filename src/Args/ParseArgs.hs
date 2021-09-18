@@ -4,7 +4,6 @@ module Args.ParseArgs
 
 import Args.HhakArgs
 import GHC.Base (when)
-import Control.Exception (ErrorCall(ErrorCall), throw)
 import Control.Monad
 import Data.Either
 
