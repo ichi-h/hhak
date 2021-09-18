@@ -24,10 +24,10 @@ data Algorithm =  Algo2b | Algo2a | Algo2y
 
 genHhakArgs :: [String] -> String -> Either String HhakArgs
 genHhakArgs args passphrase = do
-  addPassphrase passphrase $ overrideArgsByPreset $ perseArgs args
+  addPassphrase passphrase $ overrideArgsByPreset $ parseArgs args
 
-perseArgs :: [String] -> Either String HhakArgs
-perseArgs args = do
+parseArgs :: [String] -> Either String HhakArgs
+parseArgs args = do
   Right HhakArgs { command = "help"
            , passphrase = ""
            , title = ""
