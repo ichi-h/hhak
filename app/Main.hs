@@ -1,9 +1,14 @@
 module Main where
 
 import System.Environment (getArgs)
+import ReadPassphrase (readPassphrase)
+import Args.HhakArgs (genHhakArgs)
+import Commands.CommandRunner (runCommand)
+import Result (showResult)
 
+main :: IO ()
 main = do
   args <- getArgs
-  let str_num = head args
-  let num = read str_num :: Int
-  print (num > 100)
+  pass <- readPassphrase
+
+  showResult $ runCommand $ genHhakArgs args pass
