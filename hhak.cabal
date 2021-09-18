@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Args.AddPassphrase
       Args.HhakArgs
       Args.HhakArgsGenerator
       Args.ParseArgs
