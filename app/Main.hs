@@ -2,7 +2,7 @@ module Main where
 
 import System.Environment (getArgs)
 import ReadPassphrase (readPassphrase)
-import Args.HhakArgs (genHhakArgs)
+import Args.HhakArgsGenerator (genHhakArgs)
 import Commands.CommandRunner (runCommand)
 import Result (showResult)
 
