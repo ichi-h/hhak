@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Args.HhakArgs
+      Args.HhakArgsGenerator
+      Args.ParseArgs
       Commands.CommandRunner
       ReadPassphrase
       Result
