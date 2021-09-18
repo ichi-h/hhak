@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      ReadPassphrase
   other-modules:
       Paths_hhak
   hs-source-dirs:
