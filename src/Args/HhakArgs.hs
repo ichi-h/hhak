@@ -40,6 +40,6 @@ defaultHhakArgs = do
            }
 
 strToAlgo :: String -> Algorithm
-strToAlgo "2b" = Algo2b
 strToAlgo "2a" = Algo2a
 strToAlgo "2y" = Algo2y
+strToAlgo _    = Algo2b
