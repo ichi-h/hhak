@@ -8,4 +8,5 @@ import Control.Monad ()
 
 readPreset :: ([String], [String]) -> Either String ([String], [String])
 readPreset (front, back) = do
-  overrideArgs (front, back) $ genPresetOptions $ readRC
+  -- overrideArgs (front, back) $ genPresetOptions $ readRC "~/.hhakrc"
+  Right (front, back)
