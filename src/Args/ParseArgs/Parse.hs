@@ -4,20 +4,18 @@ module Args.ParseArgs.Parse
 
 import Args.HhakArgs ( Algorithm(Algo2b), Options(..), HhakArgs(..), strToAlgo )
 import Util.StringOperation ( startWith )
-import Control.Monad ( when )
-import Data.Either ( fromLeft, fromRight, isLeft )
 
 parse :: Either String ([String], [String]) -> Either String HhakArgs
 parse result = do
-  when (isLeft result) $ Left $ fromLeft "" result
-
-  let (front, back) = fromRight ([], []) result
-  Right HhakArgs { command = getCmd (front, back)
-                 , passphrase = ""
-                 , title = head front
-                 , preset = if length front == 2 then last front else ""
-                 , options = argsToOptions back
-                 }
+  case result of
+    Left msg            -> Left msg
+    Right (front, back) ->
+      Right HhakArgs { command = getCmd (front, back)
+                    , passphrase = ""
+                    , title = head front
+                    , preset = if length front == 2 then last front else ""
+                    , options = argsToOptions back
+                    }
 
 getCmd :: ([String], [String]) -> String
 getCmd (front, back) =

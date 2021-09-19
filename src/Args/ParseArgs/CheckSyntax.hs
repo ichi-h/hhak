@@ -4,23 +4,33 @@ module Args.ParseArgs.CheckSyntax
 
 import Args.HhakArgs ()
 import Util.StringOperation ( startWith, joinStr )
-import Control.Monad ( when, unless )
-import Data.Either ( fromLeft, fromRight, isLeft )
 
 checkSyntax :: Either String ([String], [String]) -> Either String ([String], [String])
 checkSyntax result = do
-  when (isLeft result) $ Left $ fromLeft "" result
+  case result of
+    Left msg -> Left msg
+    Right _  -> hasInvalidAlgo $ hasUnknownOptions $ hasUnknownValues result
 
-  let (front, back) = fromRight ([], []) result
-  when (2 < length front) $ Left $ "'" ++ joinStr ", " (drop 2 front) ++ "' is unknown argument."
+hasUnknownValues :: Either String ([String], [String]) -> Either String ([String], [String])
+hasUnknownValues result = do
+  case result of
+    Left msg            -> Left msg
+    Right (front, back) ->
+      if 2 < length front then
+        Left $ "'" ++ joinStr ", " (drop 2 front) ++ "' is unknown argument."
+      else
+        Right (front, back)
 
-  let (isValid, opt) = checkOperator back
-  unless isValid $ Left $ "'" ++ opt ++ "' is invalid option."
-
-  let (isValid, opt) = checkAlgo back
-  unless isValid $ Left $ "'" ++ opt ++ "' is invalid algorithm. It must be '2b', '2a' or '2y'"
-
-  Right (front, back)
+hasUnknownOptions :: Either String ([String], [String]) -> Either String ([String], [String])
+hasUnknownOptions result = do
+  case result of
+    Left msg            -> Left msg
+    Right (front, back) ->
+      if not isValid then
+        Left $ "'" ++ opt ++ "' is unknown option."
+      else
+        Right (front, back)
+      where (isValid, opt) = checkOperator back
 
 checkOperator :: [String] -> (Bool, String)
 checkOperator [] = (True, "")
@@ -40,6 +50,17 @@ checkOperator (x:xs) = do
     start "--cost"
   then (False, x)
   else checkOperator xs
+
+hasInvalidAlgo :: Either String ([String], [String]) -> Either String ([String], [String])
+hasInvalidAlgo result = do
+  case result of
+    Left msg            -> Left msg
+    Right (front, back) ->
+      if not isValid then
+        Left $ "'" ++ opt ++ "' is invalid algorithm. It must be '2b', '2a' or '2y'"
+      else
+        Right (front, back)
+      where (isValid, opt) = checkAlgo back
 
 checkAlgo :: [String] -> (Bool, String)
 checkAlgo [] = (True, "")
