@@ -27,8 +27,8 @@ getCmd (front, back) =
         "--version" -> "version"
         "-h"        -> "help"
         "--help"    -> "help"
-        _           -> "cmd"
-    _ -> "cmd"
+        _           -> "generate"
+    _ -> "generate"
 
 argsToOptions :: [String] -> Options
 argsToOptions args = do
