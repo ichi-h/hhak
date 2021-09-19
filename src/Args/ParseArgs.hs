@@ -15,7 +15,7 @@ sepAtOptions :: [String] -> [String] -> ([String], [String])
 sepAtOptions acc [] = (acc, [])
 sepAtOptions acc (arg:args) =
     if head arg == '-' then
-      (acc, args)
+      (acc, arg:args)
     else
       sepAtOptions (acc++[arg]) args
 
