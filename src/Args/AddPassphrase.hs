@@ -1,8 +1,8 @@
 module Args.AddPassphrase where
 
 import Args.HhakArgs (HhakArgs(..), defaultHhakArgs)
-import Data.Either
-import Control.Monad
+import Data.Either ( fromLeft, fromRight, isLeft )
+import Control.Monad ( when )
 
 addPassphrase :: String -> Either String HhakArgs -> Either String HhakArgs
 addPassphrase passphrase result = do
