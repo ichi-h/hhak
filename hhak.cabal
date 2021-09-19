@@ -34,6 +34,9 @@ library
       Args.ParseArgs.ReadPreset
       Args.ParseArgs.SepAtOptions
       Commands.CommandRunner
+      Commands.Generate.GenCmd
+      Commands.Help.HelpCmd
+      Commands.Version.VerCmd
       ReadPassphrase
       Result
       Util.StringOperation
