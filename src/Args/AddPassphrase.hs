@@ -9,4 +9,4 @@ addPassphrase passphrase result = do
   when (isLeft result) $ Left $ fromLeft "" result
 
   let hhakArgs = fromRight defaultHhakArgs result
-  Right (hhakArgs { passphrase = passphrase })
+  Right $ hhakArgs { passphrase = passphrase }
