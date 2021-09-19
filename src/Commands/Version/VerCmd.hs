@@ -5,3 +5,4 @@ module Commands.Version.VerCmd
 import Args.HhakArgs (HhakArgs (command))
 
 verCmd :: Either String String
+verCmd = Right "hhak version 0.1.0"
