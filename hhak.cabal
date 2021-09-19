@@ -32,6 +32,7 @@ library
       Commands.CommandRunner
       ReadPassphrase
       Result
+      Util.StringOperation
   other-modules:
       Paths_hhak
   hs-source-dirs:

@@ -3,13 +3,10 @@ module Args.ParseArgs
   ) where
 
 import Args.HhakArgs
+import Util.StringOperation
 import GHC.Base (when)
 import Control.Monad
 import Data.Either
-
-startWith :: String -> String -> Bool
-startWith _ [] = False
-startWith target searchStr = take (length searchStr) target == searchStr
 
 parseArgs :: [String] -> Either String HhakArgs
 parseArgs args = parse $ checkSyntax $ sepAtOptions [] args
@@ -33,11 +30,6 @@ checkSyntax (front, back) = do
   unless isValid $ Left $ "'" ++ opt ++ "' is invalid algorithm. It must be '2b', '2a' or '2y'"
 
   Right (front, back)
-
-joinStr :: String -> [String] -> String
-joinStr _ [] = ""
-joinStr sep [x] = x
-joinStr sep (x:xs) = x ++ sep ++ joinStr sep xs
 
 checkOperator :: [String] -> (Bool, String)
 checkOperator [] = (True, "")
