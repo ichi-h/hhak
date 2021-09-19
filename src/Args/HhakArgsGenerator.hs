@@ -4,12 +4,8 @@ module Args.HhakArgsGenerator
 
 import Args.HhakArgs (HhakArgs)
 import Args.ParseArgs (parseArgs)
-import Args.AddPassphrase ( addPassphrase )
+import Args.AddPassphrase (addPassphrase)
 
 genHhakArgs :: [String] -> String -> Either String HhakArgs
 genHhakArgs args passphrase = do
-  addPassphrase passphrase $ overrideArgsByPreset $ parseArgs args
-
-overrideArgsByPreset :: Either String HhakArgs -> Either String HhakArgs
-overrideArgsByPreset hhakArgs = do
-  hhakArgs
+  addPassphrase passphrase $ parseArgs args

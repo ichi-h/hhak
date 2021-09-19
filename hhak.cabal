@@ -29,6 +29,10 @@ library
       Args.HhakArgs
       Args.HhakArgsGenerator
       Args.ParseArgs
+      Args.ParseArgs.CheckSyntax
+      Args.ParseArgs.Parse
+      Args.ParseArgs.ReadPreset
+      Args.ParseArgs.SepAtOptions
       Commands.CommandRunner
       ReadPassphrase
       Result
