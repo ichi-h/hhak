@@ -3,7 +3,7 @@ module ReadPassphrase
   ) where
 
 import System.IO
-import Control.Exception
+import Control.Exception ( bracket_ )
 
 readPassphrase :: IO String 
 readPassphrase = do

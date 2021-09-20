@@ -2,7 +2,7 @@ module Args.ParseArgs.ReadPreset
   ( readPreset
   ) where
 
-import Args.HhakArgs (HhakArgs(..))
+import Args.HhakArgs ( HhakArgs(..) )
 import Data.Either ()
 import Control.Monad ()
 

@@ -2,7 +2,7 @@ module Commands.Generate.HashPassphrase
   ( hashPassphrase
   ) where
 
-import Args.HhakArgs (HhakArgs (title, passphrase))
+import Args.HhakArgs ( HhakArgs (title, passphrase) )
 import Data.ByteString as BS ( ByteString )
 import Data.ByteString.UTF8 as BSU ( fromString )
 import Crypto.Hash ( hash, SHA3_512, Digest )

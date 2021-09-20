@@ -2,10 +2,10 @@ module Commands.CommandRunner
   ( runCommand
   ) where
 
-import Args.HhakArgs (HhakArgs (command))
-import Commands.Generate.GenCmd (genCmd)
-import Commands.Help.HelpCmd (helpCmd)
-import Commands.Version.VerCmd (verCmd)
+import Args.HhakArgs ( HhakArgs(command) )
+import Commands.Generate.GenCmd ( genCmd )
+import Commands.Help.HelpCmd ( helpCmd )
+import Commands.Version.VerCmd ( verCmd )
 
 runCommand :: Either String HhakArgs -> Either String String
 runCommand result = do

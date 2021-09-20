@@ -1,11 +1,11 @@
 module Main where
 
-import System.Environment (getArgs)
-import Args.HhakArgs (HhakArgs(..))
-import ReadPassphrase (readPassphrase)
-import Args.HhakArgsGenerator (genHhakArgs)
-import Commands.CommandRunner (runCommand)
-import Result (showResult)
+import System.Environment ( getArgs )
+import Args.HhakArgs ( HhakArgs(..) )
+import ReadPassphrase ( readPassphrase )
+import Args.HhakArgsGenerator ( genHhakArgs )
+import Commands.CommandRunner ( runCommand )
+import Result ( showResult )
 
 main :: IO ()
 main = do
