@@ -1,6 +1,7 @@
 module Util.StringOperation
   ( startWith
   , include
+  , rmDup
   , joinStr
   ) where
 
@@ -8,7 +9,7 @@ startWith :: String -> String -> Bool
 startWith _ [] = False
 startWith target searchStr = take (length searchStr) target == searchStr
 
-include :: String -> String -> Bool
+include :: (Eq a) => [a] -> [a] -> Bool
 include _ [] = False
 include target searchStr =
   if length searchStr < length target then
@@ -17,6 +18,9 @@ include target searchStr =
     True
   else
     include target (tail searchStr)
+
+rmDup :: (Eq a) => [a] -> [a]
+rmDup = foldl (\acc item -> if not $ include [item] acc then acc ++ [item] else acc) []
 
 joinStr :: String -> [String] -> String
 joinStr _ [] = ""
