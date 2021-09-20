@@ -47,16 +47,16 @@ checkOperator [] = (True, "")
 checkOperator (x:xs) = do
   let start = startWith x
   if
-    start "-h" ||
-    start "--help" ||
-    start "-v" ||
+    start "-h"        ||
+    start "--help"    ||
+    start "-v"        ||
     start "--version" ||
     start "--display" ||
-    start "-f" ||
-    start "--force" ||
-    start "--len=" ||
-    start "--sym=" ||
-    start "--algo" ||
+    start "-f"        ||
+    start "--force"   ||
+    start "--len="    ||
+    start "--sym="    ||
+    start "--algo"    ||
     start "--cost"
   then (False, x)
   else checkOperator xs

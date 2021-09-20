@@ -11,11 +11,11 @@ parse result = do
     Left msg            -> Left msg
     Right (front, back) ->
       Right HhakArgs { command = getCmd (front, back)
-                    , passphrase = ""
-                    , title = head front
-                    , preset = if length front == 2 then last front else ""
-                    , options = argsToOptions back
-                    }
+                     , passphrase = ""
+                     , title = head front
+                     , preset = if length front == 2 then last front else ""
+                     , options = argsToOptions back
+                     }
 
 getCmd :: ([String], [String]) -> String
 getCmd (front, back) =
