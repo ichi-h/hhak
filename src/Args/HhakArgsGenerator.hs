@@ -3,9 +3,11 @@ module Args.HhakArgsGenerator
   ) where
 
 import Args.HhakArgs (HhakArgs)
-import Args.ParseArgs (parseArgs)
-import Args.AddPassphrase (addPassphrase)
+import Args.ParseArgs.SepAtOptions (sepAtOptions)
+import Args.ParseArgs.ReadPreset (readPreset)
+import Args.ParseArgs.CheckSyntax (checkSyntax)
+import Args.ParseArgs.Parse (parse)
+import Data.Either ()
 
-genHhakArgs :: [String] -> String -> Either String HhakArgs
-genHhakArgs args passphrase = do
-  addPassphrase passphrase $ parseArgs args
+genHhakArgs :: [String] -> Either String HhakArgs
+genHhakArgs args = parse $ checkSyntax $ readPreset $ sepAtOptions [] args

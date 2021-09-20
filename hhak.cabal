@@ -25,10 +25,8 @@ source-repository head
 
 library
   exposed-modules:
-      Args.AddPassphrase
       Args.HhakArgs
       Args.HhakArgsGenerator
-      Args.ParseArgs
       Args.ParseArgs.CheckSyntax
       Args.ParseArgs.Parse
       Args.ParseArgs.ReadPreset
