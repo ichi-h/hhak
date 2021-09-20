@@ -9,7 +9,17 @@ checkSyntax :: Either String ([String], [String]) -> Either String ([String], [S
 checkSyntax result = do
   case result of
     Left msg -> Left msg
-    Right _  -> hasInvalidAlgo $ hasUnknownOptions $ hasUnknownValues result
+    Right _  -> hasInvalidAlgo $ hasUnknownOptions $ hasUnknownValues $ isEmpty result
+
+isEmpty :: Either String ([String], [String]) -> Either String ([String], [String])
+isEmpty result = do
+  case result of
+    Left msg            -> Left msg
+    Right (front, back) ->
+      if null (front ++ back) then
+        Right ([], ["--help"])
+      else
+        Right (front, back)
 
 hasUnknownValues :: Either String ([String], [String]) -> Either String ([String], [String])
 hasUnknownValues result = do
