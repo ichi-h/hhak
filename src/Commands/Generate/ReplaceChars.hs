@@ -1,11 +1,11 @@
-module Commands.Generate.ExchangeStr
-  ( exchangeStr
+module Commands.Generate.ReplaceChars
+  ( replaceChars
   ) where
 
 import Args.HhakArgs ( HhakArgs (options), Options (sym) )
 
-exchangeStr :: HhakArgs -> String -> String
-exchangeStr hhakArgs hashed = do
+replaceChars :: HhakArgs -> String -> String
+replaceChars hhakArgs hashed = do
   let symChars = genSymChars $ sym $ options hhakArgs
   randomReplace symChars $ removeSyms hashed
 

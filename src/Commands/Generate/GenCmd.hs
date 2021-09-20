@@ -5,9 +5,9 @@ module Commands.Generate.GenCmd
 import Args.HhakArgs ( HhakArgs (passphrase) )
 import Commands.Generate.HashPassphrase ( hashPassphrase )
 import Commands.Generate.HashByBCrypt ( hashByBCrypt )
-import Commands.Generate.ExchangeStr ( exchangeStr )
+import Commands.Generate.ReplaceChars ( replaceChars )
 import Commands.Generate.CopyClipboard ( copyClipboard )
 
 genCmd :: HhakArgs -> Either String String
 genCmd hhakArgs = do
-  copyClipboard hhakArgs $ exchangeStr hhakArgs $ hashByBCrypt hhakArgs $ hashPassphrase hhakArgs
+  copyClipboard hhakArgs $ replaceChars hhakArgs $ hashByBCrypt hhakArgs $ hashPassphrase hhakArgs

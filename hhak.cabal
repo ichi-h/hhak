@@ -33,10 +33,10 @@ library
       Args.ParseArgs.SepAtOptions
       Commands.CommandRunner
       Commands.Generate.CopyClipboard
-      Commands.Generate.ExchangeStr
       Commands.Generate.GenCmd
       Commands.Generate.HashByBCrypt
       Commands.Generate.HashPassphrase
+      Commands.Generate.ReplaceChars
       Commands.Help.HelpCmd
       Commands.Version.VerCmd
       ReadPassphrase
