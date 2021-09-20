@@ -1,6 +1,6 @@
 module Commands.Generate.ExchangeStr
-( exchangeStr
-) where
+  ( exchangeStr
+  ) where
 
 import Args.HhakArgs ( HhakArgs )
 

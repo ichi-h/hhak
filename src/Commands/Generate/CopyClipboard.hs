@@ -1,6 +1,6 @@
 module Commands.Generate.CopyClipboard
-( copyClipboard
-) where
+  ( copyClipboard
+  ) where
 
 import Args.HhakArgs ( HhakArgs )
 
