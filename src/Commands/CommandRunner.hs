@@ -15,4 +15,4 @@ runCommand result = do
       "help"     -> helpCmd
       "version"  -> verCmd
       "generate" -> genCmd hhakArgs
-      _          -> helpCmd hhakArgs
+      _          -> helpCmd
