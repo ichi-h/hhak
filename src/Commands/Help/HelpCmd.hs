@@ -2,8 +2,6 @@ module Commands.Help.HelpCmd
   ( helpCmd
   ) where
 
-import Args.HhakArgs (HhakArgs (command))
-
 helpCmd :: Either String String
 helpCmd = Right "\
 \Usage: dhak [-h, --help] [-v, --version] <title> (<preset>) [options]\n\
