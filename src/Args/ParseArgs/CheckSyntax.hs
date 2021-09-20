@@ -40,26 +40,44 @@ hasUnknownOptions result = do
         Left $ "'" ++ opt ++ "' is unknown option."
       else
         Right (front, back)
-      where (isValid, opt) = checkOperator back
+      where (isValid, opt) = checkOperator front back
 
-checkOperator :: [String] -> (Bool, String)
-checkOperator [] = (True, "")
-checkOperator (x:xs) = do
+checkOperator :: [String] -> [String] -> (Bool, String)
+checkOperator _ [] = (True, "")
+checkOperator front (x:xs) = do
   let start = startWith x
-  if
-    start "-h"        ||
-    start "--help"    ||
-    start "-v"        ||
-    start "--version" ||
-    start "--display" ||
-    start "-f"        ||
-    start "--force"   ||
-    start "--len="    ||
-    start "--sym="    ||
-    start "--algo"    ||
-    start "--cost"
-  then (False, x)
-  else checkOperator xs
+  case length (front ++ x:xs) of
+    1 ->
+      if
+        (x == "-h"         ||
+         x == "--help"     ||
+         x == "-v"         ||
+         x == "--version") &&
+        not (x == "-d"        ||
+             x == "--display" ||
+             x == "--force"   ||
+             start "--len="   ||
+             start "--sym="   ||
+             start "--algo="  ||
+             start "--cost=")
+      then checkOperator front xs
+      else (False, x)
+    _ ->
+      if
+        not (x == "-h"         ||
+             x == "--help"     ||
+             x == "-v"         ||
+             x == "--version") &&
+        (x ==  "-d"         ||
+         x ==  "--display"  ||
+         x ==  "-f"         ||
+         x ==  "--force"    ||
+         start "--len="     ||
+         start "--sym="     ||
+         start "--algo="    ||
+         start "--cost=")
+      then checkOperator front xs
+      else (False, x)
 
 hasInvalidAlgo :: Either String ([String], [String]) -> Either String ([String], [String])
 hasInvalidAlgo result = do
@@ -76,8 +94,6 @@ checkAlgo :: [String] -> (Bool, String)
 checkAlgo [] = (True, "")
 checkAlgo (x:xs) = do
   let start = startWith x
-  if
-    start "--algo" &&
-    not ( start "--algo=2b" || start "--algo=2a" || start "--algo=2y")
-  then (False, x)
-  else checkAlgo xs
+  if not (start "--algo") || (start "--algo=2b" || start "--algo=2a" || start "--algo=2y")
+    then checkAlgo xs
+    else (False, x)
