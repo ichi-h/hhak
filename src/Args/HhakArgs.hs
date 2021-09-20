@@ -4,6 +4,7 @@ module Args.HhakArgs
   , Algorithm (..)
   , defaultHhakArgs
   , strToAlgo
+  , algoToStr
   ) where
 
 data HhakArgs = HhakArgs { command :: String
@@ -43,3 +44,8 @@ strToAlgo :: String -> Algorithm
 strToAlgo "2a" = Algo2a
 strToAlgo "2y" = Algo2y
 strToAlgo _    = Algo2b
+
+algoToStr :: Algorithm -> String
+algoToStr Algo2b = "2b"
+algoToStr Algo2a = "2a"
+algoToStr Algo2y = "2y"
