@@ -42,6 +42,7 @@ library
       ReadPassphrase
       Result
       Util.DJB2Hash
+      Util.GenRndIntList
       Util.StringOperation
   other-modules:
       Paths_hhak
