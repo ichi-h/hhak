@@ -3,6 +3,7 @@ module Commands.Generate.ReplaceChars
   ) where
 
 import Args.HhakArgs ( HhakArgs (options), Options (sym) )
+import Util.StringOperation ( include, rmDup )
 
 replaceChars :: HhakArgs -> String -> String
 replaceChars hhakArgs hashed = do
@@ -10,7 +11,8 @@ replaceChars hhakArgs hashed = do
   randomReplace symChars $ removeSyms hashed
 
 genSymChars :: String -> String
-genSymChars symOpt = "foo"
+genSymChars syms =
+  rmDup $ filter (\c -> not $ include [c] (['a'..'z'] ++ ['A'..'Z'] ++ ['0'..'9'])) syms
 
 removeSyms :: String -> String
 removeSyms password = "bar"
