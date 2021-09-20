@@ -45,17 +45,11 @@ updateOption :: Options -> String -> Options
 updateOption options arg = do
   let start = startWith arg
 
-  if start "-d" || start "--display" then
-    options { display = True }
-  else if start "-f" || start "--force" then
-    options { force = True }
-  else if start "--len=" then
-    options { len = read $ drop (length "--len=") arg :: Int }
-  else if start "--sym=" then
-    options { sym = drop (length "--sym=") arg }
-  else if start "--algo=" then
-    options { algo = strToAlgo $ drop (length "--algo=") arg }
-  else if start "--cost=" then
-    options { cost = read $ drop (length "--cost=") arg :: Int }
-  else
-    options
+  case arg of
+    _ | start "-d" || start "--display" -> options { display = True }
+      | start "-f" || start "--force"   -> options { force = True }
+      | start "--len="  -> options { len = read $ drop (length "--len=") arg :: Int }
+      | start "--sym="  -> options { sym = drop (length "--sym=") arg }
+      | start "--algo=" -> options { algo = strToAlgo $ drop (length "--algo=") arg }
+      | start "--cost=" -> options { cost = read $ drop (length "--cost=") arg :: Int }
+      | otherwise       -> options
