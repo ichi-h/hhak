@@ -41,6 +41,7 @@ library
       Commands.Version.VerCmd
       ReadPassphrase
       Result
+      Util.DJB2Hash
       Util.StringOperation
   other-modules:
       Paths_hhak
