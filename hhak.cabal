@@ -34,7 +34,11 @@ library
       Args.ParseArgs.ReadPreset
       Args.ParseArgs.SepAtOptions
       Commands.CommandRunner
+      Commands.Generate.CopyClipboard
+      Commands.Generate.ExchangeStr
       Commands.Generate.GenCmd
+      Commands.Generate.HashByBCrypt
+      Commands.Generate.HashPassphrase
       Commands.Help.HelpCmd
       Commands.Version.VerCmd
       ReadPassphrase
