@@ -52,6 +52,9 @@ library
       base >=4.7 && <5
     , bytestring >=0.10.12.0
     , cryptonite >=0.29
+    , hspec >=2.8.3
+    , hspec-core >=2.8.3
+    , hspec-discover >=2.8.3
     , memory >=0.16.0
     , random >=1.2.1
     , utf8-string >=1.0.2
@@ -69,6 +72,9 @@ executable hhak-exe
     , bytestring >=0.10.12.0
     , cryptonite >=0.29
     , hhak
+    , hspec >=2.8.3
+    , hspec-core >=2.8.3
+    , hspec-discover >=2.8.3
     , memory >=0.16.0
     , random >=1.2.1
     , utf8-string >=1.0.2
@@ -87,6 +93,9 @@ test-suite hhak-test
     , bytestring >=0.10.12.0
     , cryptonite >=0.29
     , hhak
+    , hspec >=2.8.3
+    , hspec-core >=2.8.3
+    , hspec-discover >=2.8.3
     , memory >=0.16.0
     , random >=1.2.1
     , utf8-string >=1.0.2

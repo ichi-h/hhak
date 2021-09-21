@@ -26,6 +26,9 @@ dependencies:
 - utf8-string >=1.0.2
 - memory >=0.16.0
 - random >=1.2.1
+- hspec >=2.8.3
+- hspec-core >=2.8.3
+- hspec-discover >=2.8.3
 
 library:
   source-dirs: src
