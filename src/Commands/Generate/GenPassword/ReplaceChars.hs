@@ -1,4 +1,4 @@
-module Commands.Generate.ReplaceChars
+module Commands.Generate.GenPassword.ReplaceChars
   ( replaceChars
   ) where
 
