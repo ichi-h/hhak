@@ -34,4 +34,4 @@ genRealSalt seed = do
   let c = ['a'..'z'] ++ ['A'..'Z'] ++ ['.', '/']
   let rdCharM = uniformRM (0, Prelude.length c - 1) :: StatefulGen g m => g -> m Int
   let pureGen = mkStdGen seed
-  Prelude.map (c !!) $ runStateGen_ pureGen (replicateM 22 . rdCharM)
+  Prelude.map (c !!) $ runStateGen_ pureGen (replicateM 16 . rdCharM)
