@@ -6,13 +6,14 @@ module Args.HhakArgs
   , strToAlgo
   , algoToStr
   ) where
+import GHC.Show (Show)
 
 data HhakArgs = HhakArgs { command :: String
                          , passphrase :: String
                          , title :: String
                          , preset :: String
                          , options :: Options
-                         }
+                         } deriving (Show)
 
 data Options = Options { display :: Bool
                        , force :: Bool
@@ -20,9 +21,9 @@ data Options = Options { display :: Bool
                        , sym :: String
                        , algo :: Algorithm
                        , cost :: Int
-                       }
+                       } deriving (Show)
 
-data Algorithm =  Algo2b | Algo2a | Algo2y
+data Algorithm =  Algo2b | Algo2a | Algo2y deriving (Show)
 
 defaultHhakArgs = do
   let options = Options { display = False
