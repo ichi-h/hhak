@@ -2,10 +2,12 @@ module Args.HhakArgs
   ( HhakArgs (..)
   , Options (..)
   , Algorithm (..)
+  , defaultOptions
   , defaultHhakArgs
   , strToAlgo
   , algoToStr
   ) where
+
 import GHC.Show (Show)
 
 data HhakArgs = HhakArgs { command :: String
@@ -25,21 +27,22 @@ data Options = Options { display :: Bool
 
 data Algorithm =  Algo2b | Algo2a | Algo2y deriving (Show)
 
-defaultHhakArgs = do
-  let options = Options { display = False
-                        , force = False
-                        , len = 20
-                        , sym = "!\"#$%&‘()*+,-./:;<=>?@[\\]^_`{|}~"
-                        , algo = Algo2b
-                        , cost = 10
-                        }
+defaultOptions :: Options
+defaultOptions = Options { display = False
+                         , force = False
+                         , len = 20
+                         , sym = "!\"#$%&‘()*+,-./:;<=>?@[\\]^_`{|}~"
+                         , algo = Algo2b
+                         , cost = 10
+                         }
 
-  HhakArgs { command = "help"
-           , passphrase = ""
-           , title = ""
-           , preset = ""
-           , options = options
-           }
+defaultHhakArgs :: HhakArgs
+defaultHhakArgs = HhakArgs { command = "help"
+                           , passphrase = ""
+                           , title = ""
+                           , preset = ""
+                           , options = defaultOptions
+                           }
 
 strToAlgo :: String -> Algorithm
 strToAlgo "2a" = Algo2a

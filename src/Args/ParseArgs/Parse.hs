@@ -2,7 +2,7 @@ module Args.ParseArgs.Parse
   ( parse
   ) where
 
-import Args.HhakArgs ( Algorithm(Algo2b), Options(..), HhakArgs(..), strToAlgo )
+import Args.HhakArgs ( Algorithm(Algo2b), Options(..), HhakArgs(..), strToAlgo, defaultOptions )
 import Util.StringOperation ( startWith )
 
 parse :: Either String ([String], [String]) -> Either String HhakArgs
@@ -35,15 +35,7 @@ getCmd (front, back) =
     _ -> "generate"
 
 argsToOptions :: [String] -> Options
-argsToOptions args = do
-  let options = Options { display = False
-                        , force = False
-                        , len = 20
-                        , sym = "!\"#$%&‘()*+,-./:;<=>?@[\\]^_`{|}~"
-                        , algo = Algo2b
-                        , cost = 10
-                        }
-  foldl updateOption options args
+argsToOptions = foldl updateOption defaultOptions
 
 updateOption :: Options -> String -> Options
 updateOption options arg = do
