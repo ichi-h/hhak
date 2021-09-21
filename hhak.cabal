@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      AfterAll
       Args.HhakArgs
       Args.HhakArgsGenerator
       Args.ParseArgs.CheckSyntax
@@ -40,7 +41,6 @@ library
       Commands.Generate.GenPassword.ReplaceChars
       Commands.Help.HelpCmd
       Commands.Version.VerCmd
-      Result
       Util.DJB2Hash
       Util.GenRndIntList
       Util.ReadPassphrase
