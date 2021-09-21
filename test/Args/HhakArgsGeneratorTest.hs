@@ -80,3 +80,28 @@ specGenHhakArgs = do
       case result of
         Left err       -> fail err
         Right hhakArgs -> show hhakArgs `shouldBe` show expected
+
+  describe "Abnormal behavior" $ do
+    it "-x (unknown option)" $ do
+      let result = genHhakArgs ["-x"]
+      case result of
+        Left err -> err `shouldBe` "'-x' is unknown option."
+        Right _  -> fail "Unknown options passed test."
+
+    it "GitHub presetName -h (unknown option)" $ do
+      let result = genHhakArgs ["GitHub", "presetName", "-h"]
+      case result of
+        Left err -> err `shouldBe` "'-h' is unknown option."
+        Right _  -> fail "Arguments with syntax error passed test."
+
+    it "GitHub presetName foo bar -x (unknown arguments)" $ do
+      let result = genHhakArgs ["GitHub", "presetName", "foo", "bar", "-x"]
+      case result of
+        Left err -> err `shouldBe` "'foo, bar' is unknown argument."
+        Right _  -> fail "Unknown arguments passed test."
+
+    it "GitHub -d presetName (syntax error)" $ do
+      let result = genHhakArgs ["GitHub", "-d", "presetName"]
+      case result of
+        Left err -> err `shouldBe` "'presetName' is unknown option."
+        Right _  -> fail "Arguments with syntax error passed test."
