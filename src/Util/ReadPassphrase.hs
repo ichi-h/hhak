@@ -1,8 +1,8 @@
-module ReadPassphrase
+module Util.ReadPassphrase
   ( readPassphrase
   ) where
 
-import System.IO
+import System.IO ( stdout, hFlush, hGetEcho, hSetEcho, stdin )
 import Control.Exception ( bracket_ )
 
 readPassphrase :: IO String 

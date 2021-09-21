@@ -40,10 +40,10 @@ library
       Commands.Generate.GenPassword.ReplaceChars
       Commands.Help.HelpCmd
       Commands.Version.VerCmd
-      ReadPassphrase
       Result
       Util.DJB2Hash
       Util.GenRndIntList
+      Util.ReadPassphrase
       Util.StringOperation
   other-modules:
       Paths_hhak
