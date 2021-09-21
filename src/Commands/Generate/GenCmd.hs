@@ -4,7 +4,6 @@ module Commands.Generate.GenCmd
 
 import Args.HhakArgs ( HhakArgs (passphrase) )
 import Commands.Generate.GenPassword ( genPassword )
-import Commands.Generate.CopyClipboard ( copyClipboard )
 
 genCmd :: HhakArgs -> Either String String
-genCmd hhakArgs = copyClipboard hhakArgs $ genPassword hhakArgs
+genCmd hhakArgs = Right $ genPassword hhakArgs
