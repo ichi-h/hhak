@@ -55,6 +55,7 @@ library
     , hspec-core >=2.8.3
     , hspec-discover >=2.8.3
     , memory >=0.16.0
+    , process >=1.6.13.2
     , random >=1.2.1
     , utf8-string >=1.0.2
   default-language: Haskell2010
@@ -75,6 +76,7 @@ executable hhak-exe
     , hspec-core >=2.8.3
     , hspec-discover >=2.8.3
     , memory >=0.16.0
+    , process >=1.6.13.2
     , random >=1.2.1
     , utf8-string >=1.0.2
   default-language: Haskell2010
@@ -98,6 +100,7 @@ test-suite hhak-test
     , hspec-core >=2.8.3
     , hspec-discover >=2.8.3
     , memory >=0.16.0
+    , process >=1.6.13.2
     , random >=1.2.1
     , utf8-string >=1.0.2
   default-language: Haskell2010

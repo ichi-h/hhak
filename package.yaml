@@ -29,6 +29,7 @@ dependencies:
 - hspec >=2.8.3
 - hspec-core >=2.8.3
 - hspec-discover >=2.8.3
+- process >=1.6.13.2
 
 library:
   source-dirs: src

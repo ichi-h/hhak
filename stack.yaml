@@ -49,6 +49,7 @@ extra-deps:
 - hspec-2.8.3
 - hspec-core-2.8.3
 - hspec-discover-2.8.3
+- process-1.6.13.2
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
