@@ -47,24 +47,29 @@ trials password = do
 
 replace :: [Char] -> String -> Int -> String
 replace symChars password t = do
-  let
-    idxSeed = djd2hash password - 3
-    symSeed = djd2hash password - 4
-    maxIdx = length password - 1
-    maxSym = length symChars - 1
-    idxLen = t - 1
-    symLen = t - 1
+  if t == 0 || null password || null symChars then
+    password
+  else do
+    let
+      idxSeed = djd2hash password - 3
+      symSeed = djd2hash password - 4
+      maxIdx = length password - 1
+      maxSym = length symChars - 1
+      idxLen = t
+      symLen = t
 
-  let
-    rdIdx = sort $ genRndIntList idxSeed maxIdx idxLen
-    rdSym = map (symChars!!) $ genRndIntList symSeed maxSym symLen
+    let
+      rdIdx = sort (genRndIntList idxSeed maxIdx idxLen) ++ [0]
+      rdSym = map (symChars!!) (genRndIntList symSeed maxSym symLen) ++ " "
 
-  replace' [] password rdIdx rdSym 0 0
+    replace' [] password rdIdx rdSym 0
 
-replace' :: String -> String -> [Int] -> String -> Int -> Int -> String
-replace' acc [] _ _ _ _ = acc
-replace' acc (x:xs) rdIdx rdSym i t = do
-  if i == rdIdx !! t then
-    replace' (acc ++ [rdSym !! t]) xs rdIdx rdSym (i + 1) (t + 1)
+replace' :: String -> String -> [Int] -> String -> Int -> String
+replace' acc [] _ _ _ = acc
+replace' acc rest [] _ _ = acc ++ rest
+replace' acc rest _ [] _ = acc ++ rest
+replace' acc (x:xs) (idx:idxs) (sym:syms) i = do
+  if i == idx then
+    replace' (acc ++ [sym]) xs idxs syms (i + 1)
   else
-    replace' (acc ++ [x]) xs rdIdx rdSym (i + 1) t
+    replace' (acc ++ [x]) xs (idx:idxs) (sym:syms) (i + 1)
