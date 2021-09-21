@@ -57,12 +57,12 @@ specGenHhakArgs = do
         Left err       -> fail err
         Right hhakArgs -> show hhakArgs `shouldBe` show expected
 
-    it "GitHub presetName -df --len=40 --sym='' --algo=2a --cost=12" $ do
+    it "GitHub presetName -df --len=40 --sym= --algo=2a --cost=12" $ do
       let result = genHhakArgs [ "GitHub"
                                , "presetName"
                                , "-df"
                                , "--len=40"
-                               , "--sym=''"
+                               , "--sym="
                                , "--algo=2a"
                                , "--cost=12"
                                ]
