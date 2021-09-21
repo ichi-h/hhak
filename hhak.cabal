@@ -84,7 +84,7 @@ test-suite hhak-test
   main-is: Spec.hs
   other-modules:
       Args.HhakArgsGeneratorTest
-      Commands.Generate.GenPasswordTest
+      Commands.Generate.GenCmdTest
       Paths_hhak
   hs-source-dirs:
       test
