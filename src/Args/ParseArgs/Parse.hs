@@ -12,22 +12,26 @@ parse result = do
     Right (front, back) ->
       Right HhakArgs { command = getCmd (front, back)
                      , passphrase = ""
-                     , title = head front
+                     , title = getTitle front
                      , preset = if length front == 2 then last front else ""
                      , options = argsToOptions back
                      }
+
+getTitle :: [String] -> String
+getTitle front = if null front then "" else head front
 
 getCmd :: ([String], [String]) -> String
 getCmd (front, back) =
   case length $ front ++ back of
     0 -> "help"
     1 ->
-      case head back of
+      case opt of
         "-v"        -> "version"
         "--version" -> "version"
         "-h"        -> "help"
         "--help"    -> "help"
         _           -> "generate"
+        where opt = if null back then "" else head back
     _ -> "generate"
 
 argsToOptions :: [String] -> Options
