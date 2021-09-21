@@ -3,7 +3,7 @@ module Args.ParseArgs.Parse
   ) where
 
 import Args.HhakArgs ( Algorithm(Algo2b), Options(..), HhakArgs(..), strToAlgo, defaultOptions )
-import Util.StringOperation ( startWith )
+import Util.StringOperation ( startWith, include )
 
 parse :: Either String ([String], [String]) -> Either String HhakArgs
 parse result = do
@@ -42,10 +42,19 @@ updateOption options arg = do
   let start = startWith arg
 
   case arg of
-    _ | start "-d" || start "--display" -> options { display = True }
-      | start "-f" || start "--force"   -> options { force = True }
-      | start "--len="  -> options { len = read $ drop (length "--len=") arg :: Int }
-      | start "--sym="  -> options { sym = drop (length "--sym=") arg }
-      | start "--algo=" -> options { algo = strToAlgo $ drop (length "--algo=") arg }
-      | start "--cost=" -> options { cost = read $ drop (length "--cost=") arg :: Int }
-      | otherwise       -> options
+    _ | not (start "--")  -> updateSingleHyphenOpt (tail arg) options
+      | start "--display" -> options { display = True }
+      | start "--force"   -> options { force = True }
+      | start "--len="    -> options { len = read $ drop (length "--len=") arg :: Int }
+      | start "--sym="    -> options { sym = drop (length "--sym=") arg }
+      | start "--algo="   -> options { algo = strToAlgo $ drop (length "--algo=") arg }
+      | start "--cost="   -> options { cost = read $ drop (length "--cost=") arg :: Int }
+      | otherwise         -> options
+
+updateSingleHyphenOpt :: String -> Options -> Options
+updateSingleHyphenOpt [] options = options
+updateSingleHyphenOpt (x:xs) options =
+  case x of
+    'd' -> updateSingleHyphenOpt xs options { display = True }
+    'f' -> updateSingleHyphenOpt xs options { force = True }
+    _   -> options

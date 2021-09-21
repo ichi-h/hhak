@@ -3,7 +3,7 @@ module Args.ParseArgs.CheckSyntax
   ) where
 
 import Args.HhakArgs ()
-import Util.StringOperation ( startWith, joinStr )
+import Util.StringOperation ( startWith, joinStr, include )
 
 checkSyntax :: Either String ([String], [String]) -> Either String ([String], [String])
 checkSyntax result = do
@@ -53,7 +53,8 @@ checkOperator front (x:xs) = do
          x == "--help"     ||
          x == "-v"         ||
          x == "--version") &&
-        not (x == "-d"        ||
+        not (not (start "--") && include "d" x ||
+             not (start "--") && include "f" x ||
              x == "--display" ||
              x == "--force"   ||
              start "--len="   ||
@@ -68,9 +69,9 @@ checkOperator front (x:xs) = do
              x == "--help"     ||
              x == "-v"         ||
              x == "--version") &&
-        (x ==  "-d"         ||
+        (not (start "--") && include "d" x ||
+         not (start "--") && include "f" x ||
          x ==  "--display"  ||
-         x ==  "-f"         ||
          x ==  "--force"    ||
          start "--len="     ||
          start "--sym="     ||
