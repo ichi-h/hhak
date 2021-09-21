@@ -3,4 +3,7 @@ module Result
   ) where
 
 showResult :: Either String String -> IO ()
-showResult result = print "finish"
+showResult result = do
+  case result of
+    Left  s -> putStrLn s
+    Right s -> putStrLn s
