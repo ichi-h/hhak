@@ -4,6 +4,7 @@ module Commands.Generate.HashByBCrypt
 
 import Args.HhakArgs ( HhakArgs (options), Options (cost, len) )
 import Util.DJB2Hash ( djd2hash )
+import Util.GenRndIntList ( genRndIntList )
 
 import Crypto.KDF.BCrypt ( bcrypt )
 import Data.ByteString.UTF8 as BSU ( fromString, toString )
@@ -31,7 +32,9 @@ genBCryptHash bCost hashedPass = do
 
 genRealSalt :: Int -> String
 genRealSalt seed = do
-  let c = ['a'..'z'] ++ ['A'..'Z'] ++ ['.', '/']
-  let rdCharM = uniformRM (0, Prelude.length c - 1) :: StatefulGen g m => g -> m Int
-  let pureGen = mkStdGen seed
-  Prelude.map (c !!) $ runStateGen_ pureGen (replicateM 16 . rdCharM)
+  let
+      c = ['a'..'z'] ++ ['A'..'Z'] ++ ['.', '/']
+      maxValue = Prelude.length c - 1
+      listLen = 16
+
+  Prelude.map (c !!) $ genRndIntList seed maxValue listLen
