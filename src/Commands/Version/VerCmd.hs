@@ -1,6 +1,10 @@
 module Commands.Version.VerCmd
   ( verCmd
+  , afterVer
   ) where
 
-verCmd :: Either String String
-verCmd = Right "hhak version 0.1.0"
+verCmd :: String
+verCmd = "hhak version 0.1.0"
+
+afterVer :: String -> IO ()
+afterVer = putStrLn

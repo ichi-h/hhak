@@ -3,16 +3,14 @@ module Commands.CommandRunner
   ) where
 
 import Args.HhakArgs ( HhakArgs(command) )
-import Commands.Generate.GenCmd ( genCmd )
-import Commands.Help.HelpCmd ( helpCmd )
-import Commands.Version.VerCmd ( verCmd )
+import Commands.Generate.GenCmd ( genCmd, afterGen )
+import Commands.Help.HelpCmd ( helpCmd, afterHelp )
+import Commands.Version.VerCmd ( verCmd, afterVer )
 
-runCommand :: Either String HhakArgs -> Either String String
-runCommand result = do
-  case result of
-    Left msg -> Left msg
-    Right hhakArgs -> case command hhakArgs of
-      "help"     -> helpCmd
-      "version"  -> verCmd
-      "generate" -> genCmd hhakArgs
-      _          -> helpCmd
+runCommand :: HhakArgs -> IO ()
+runCommand hhakArgs =
+  case command hhakArgs of
+    "help"     -> afterHelp helpCmd
+    "version"  -> afterVer verCmd
+    "generate" -> afterGen $ genCmd hhakArgs
+    _          -> afterHelp helpCmd

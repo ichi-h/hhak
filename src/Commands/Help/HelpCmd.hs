@@ -1,10 +1,10 @@
 module Commands.Help.HelpCmd
   ( helpCmd
+  , afterHelp
   ) where
 
-helpCmd :: Either String String
+helpCmd :: String
 helpCmd =
-  Right
     "\
     \Usage: dhak [-h, --help] [-v, --version] <title> (<preset>) [options]\n\
     \\n\
@@ -35,3 +35,6 @@ helpCmd =
     \        Set a cost of BCrypt. It must be between 4 and 31. The actual rounds of stretching are 2^n.\n\
     \\n\
     \For more details, see https://ippee.github.io/dhak_docs/"
+
+afterHelp :: String -> IO ()
+afterHelp = putStrLn
