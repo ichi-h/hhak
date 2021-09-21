@@ -1,4 +1,4 @@
-module Commands.Generate.GenPassword.HashByBCrypt
+module Commands.Generate.HashByBCrypt
   ( hashByBCrypt
   ) where
 

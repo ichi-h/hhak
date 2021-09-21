@@ -1,4 +1,4 @@
-module Commands.Generate.GenPassword.HashPassphrase
+module Commands.Generate.HashPassphrase
   ( hashPassphrase
   ) where
 

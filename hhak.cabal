@@ -33,12 +33,10 @@ library
       Args.ParseArgs.ReadPreset
       Args.ParseArgs.SepAtOptions
       Commands.CommandRunner
-      Commands.Generate.CopyClipboard
       Commands.Generate.GenCmd
-      Commands.Generate.GenPassword
-      Commands.Generate.GenPassword.HashByBCrypt
-      Commands.Generate.GenPassword.HashPassphrase
-      Commands.Generate.GenPassword.ReplaceChars
+      Commands.Generate.HashByBCrypt
+      Commands.Generate.HashPassphrase
+      Commands.Generate.ReplaceChars
       Commands.Help.HelpCmd
       Commands.Version.VerCmd
       Util.DJB2Hash
