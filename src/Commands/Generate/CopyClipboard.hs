@@ -5,4 +5,4 @@ module Commands.Generate.CopyClipboard
 import Args.HhakArgs ( HhakArgs )
 
 copyClipboard :: HhakArgs -> String -> Either String String
-copyClipboard hhakArgs password = Right "Password was copied to clipboard!"
+copyClipboard hhakArgs password = Right password
