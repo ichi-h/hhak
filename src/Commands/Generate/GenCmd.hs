@@ -1,5 +1,6 @@
 module Commands.Generate.GenCmd
-  ( genCmd
+  ( GenResult (..)
+  , genCmd
   , afterGen
   ) where
 
@@ -13,10 +14,11 @@ import System.Exit ( exitWith, ExitCode (ExitFailure) )
 import System.Process ( callCommand )
 import System.Info ( os )
 import Control.Exception ( catch, SomeException (SomeException) )
+import Text.Show (Show)
 
 data GenResult = GenResult { password :: String
                            , isDisplay :: Bool
-                           }
+                           } deriving (Show)
 
 genCmd :: HhakArgs -> GenResult
 genCmd hhakArgs = do
