@@ -53,14 +53,14 @@ checkOperator front (x:xs) = do
          x == "--help"     ||
          x == "-v"         ||
          x == "--version") &&
-        not (not (start "--") && include "d" x ||
-             not (start "--") && include "f" x ||
-             x == "--display" ||
-             x == "--force"   ||
-             start "--len="   ||
-             start "--sym="   ||
-             start "--algo="  ||
-             start "--cost=")
+         not (not (start "--") && include "d" x ||
+              not (start "--") && include "f" x ||
+              x == "--display" ||
+              x == "--force"   ||
+              start "--len="   ||
+              start "--sym="   ||
+              start "--algo="  ||
+              start "--cost=")
       then checkOperator front xs
       else (False, x)
     _ ->
