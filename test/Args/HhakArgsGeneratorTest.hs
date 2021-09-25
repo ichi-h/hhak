@@ -48,36 +48,36 @@ specGenHhakArgs = do
       it "GitHub presetName --display --force" $ do
         let result = genHhakArgs ["GitHub", "presetName", "--display", "--force"]
         let expected = defaultHhakArgs { command = "generate"
-                                      , title   = "GitHub"
-                                      , preset  = "presetName"
-                                      , options = defaultOptions { display = True
+                                       , title   = "GitHub"
+                                       , preset  = "presetName"
+                                       , options = defaultOptions { display = True
                                                                   , force   = True
                                                                   }
-                                      }
+                                       }
         case result of
           Left err       -> fail err
           Right hhakArgs -> show hhakArgs `shouldBe` show expected
 
       it "GitHub presetName -df --len=40 --sym= --algo=2a --cost=12" $ do
         let result = genHhakArgs [ "GitHub"
-                                , "presetName"
-                                , "-df"
-                                , "--len=40"
-                                , "--sym="
-                                , "--algo=2a"
-                                , "--cost=12"
-                                ]
+                                 , "presetName"
+                                 , "-df"
+                                 , "--len=40"
+                                 , "--sym="
+                                 , "--algo=2a"
+                                 , "--cost=12"
+                                 ]
         let expected = defaultHhakArgs { command = "generate"
-                                      , title   = "GitHub"
-                                      , preset  = "presetName"
-                                      , options = defaultOptions { display = True
+                                       , title   = "GitHub"
+                                       , preset  = "presetName"
+                                       , options = defaultOptions { display = True
                                                                   , force   = True
                                                                   , len     = 40
                                                                   , sym     = ""
                                                                   , algo    = Algo2a
                                                                   , cost    = 12
                                                                   }
-                                      }
+                                       }
         case result of
           Left err       -> fail err
           Right hhakArgs -> show hhakArgs `shouldBe` show expected
