@@ -86,7 +86,7 @@ hasInvalidAlgo result = do
     Left msg            -> Left msg
     Right (front, back) ->
       if not isValid then
-        Left $ "'" ++ opt ++ "' is invalid algorithm. It must be '2b', '2a' or '2y'"
+        Left $ "'" ++ drop (length "--algo=") opt ++ "' is invalid algorithm. It must be '2b', '2a' or '2y'."
       else
         Right (front, back)
       where (isValid, opt) = checkAlgo back
