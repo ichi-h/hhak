@@ -106,3 +106,9 @@ specGenHhakArgs = do
         case result of
           Left err -> err `shouldBe` "'presetName' is unknown option."
           Right _  -> fail "Arguments with syntax error passed test."
+
+      it "GitHub --algo=2x (invalid algorithm)" $ do
+        let result = genHhakArgs ["GitHub", "--algo=2x"]
+        case result of
+          Left err -> err `shouldBe` "'2x' is invalid algorithm. It must be '2b', '2a' or '2y'."
+          Right _  -> fail "Invalid algorithm passed test."
