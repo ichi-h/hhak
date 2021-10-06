@@ -95,6 +95,6 @@ checkAlgo :: [String] -> (Bool, String)
 checkAlgo [] = (True, "")
 checkAlgo (x:xs) = do
   let start = startWith x
-  if not (start "--algo") || (start "--algo=2b" || start "--algo=2a" || start "--algo=2y")
+  if not (start "--algo") || (x == "--algo=2b" || x == "--algo=2a" || x == "--algo=2y")
     then checkAlgo xs
     else (False, x)
